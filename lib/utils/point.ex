@@ -18,6 +18,29 @@ defmodule Point do
   end
 
   @doc """
+
+  if user forget to specify which value is ignoring, then ignore y value
+  same as using {x, _} tuple
+
+    ## Examples
+
+      iex> Point.new(1)
+      %Point{x: 1.0, y: 0.0}
+
+  """
+  def new(x) do
+    %Point{x: x}
+  end
+
+  def new({:x, x}) do
+    %Point{x: x}
+  end
+
+  def new({:y, y}) do
+    %Point{y: y}
+  end
+
+  @doc """
   Return updated version of point increased (or decreased) on x value.
 
   ## Examples
