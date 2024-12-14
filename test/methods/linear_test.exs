@@ -1,14 +1,13 @@
 defmodule Methods.Linear.Test do
-
   use ExUnit.Case
   doctest Methods.Linear
 
   test "full_interpolation" do
-
     started_point = %Point{x: 1.3, y: 4}
     finish_point = %Point{x: 5, y: 7}
 
-    result = Methods.Linear.apply({started_point, finish_point})
+    result =
+      Methods.InterpolationProtocol.apply(%Methods.Linear{}, 0.5, [started_point, finish_point])
 
     expected = [
       %Point{x: 1.3, y: 4},
@@ -22,6 +21,5 @@ defmodule Methods.Linear.Test do
     ]
 
     assert result == expected
-
   end
 end

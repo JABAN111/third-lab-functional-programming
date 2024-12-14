@@ -17,6 +17,14 @@ defmodule Point do
     %Point{x: x, y: y}
   end
 
+  def new({:x, x}) do
+    %Point{x: x}
+  end
+
+  def new({:y, y}) do
+    %Point{y: y}
+  end
+
   @doc """
 
   if user forget to specify which value is ignoring, then ignore y value
@@ -30,14 +38,6 @@ defmodule Point do
   """
   def new(x) do
     %Point{x: x}
-  end
-
-  def new({:x, x}) do
-    %Point{x: x}
-  end
-
-  def new({:y, y}) do
-    %Point{y: y}
   end
 
   @doc """
