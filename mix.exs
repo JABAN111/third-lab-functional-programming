@@ -7,7 +7,7 @@ defmodule ThirdLabFunctionalProgramming.MixProject do
       version: "0.1.0",
       elixir: "~> 1.17",
       escript: escript(),
-      # start_permanent: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
   end
@@ -25,6 +25,8 @@ defmodule ThirdLabFunctionalProgramming.MixProject do
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
-    []
+    [
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
+    ]
   end
 end

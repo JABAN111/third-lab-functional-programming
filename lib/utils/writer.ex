@@ -1,8 +1,14 @@
 defmodule Utils.Writer do
+  @moduledoc """
+  Module for writing points to the console.
+  """
+
   def print_points(points_list) do
-    IO.puts("Points:")
-    IO.inspect(points_list)
-    # TODO реализовать эту историю
-    # Enum.each(points_list, fn {x, y} -> IO.puts("#{x} #{y}") end)
+    Enum.each(
+      points_list,
+      fn point ->
+        IO.puts(point)
+      end
+    )
   end
 end

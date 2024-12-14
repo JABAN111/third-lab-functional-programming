@@ -1,4 +1,8 @@
 defmodule Point do
+  @moduledoc """
+  Represents a point in a 2D space. And utils for working with points.
+  """
+
   @typedoc """
     Represents a point in a 2D space.
   """
@@ -55,5 +59,11 @@ defmodule Point do
 
   def update_point(point, value, :y) when is_number(value) do
     %Point{x: point.x, y: point.y + value}
+  end
+end
+
+defimpl String.Chars, for: Point do
+  def to_string(%Point{x: x, y: y}) do
+    "(#{x}, #{y})"
   end
 end

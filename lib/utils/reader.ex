@@ -1,4 +1,8 @@
 defmodule Utils.Reader do
+  @moduledoc """
+  Module for reading points from the console.
+  """
+
   alias Methods.Linear
   alias Methods.LagrangeInterp
 
@@ -10,7 +14,6 @@ defmodule Utils.Reader do
     ]
 
     {parsed_opts, _, _} = OptionParser.parse(args, switches: options_spec)
-
 
     step = Keyword.get(parsed_opts, :step, 1.5)
     linear = Keyword.get(parsed_opts, :linear, false)
@@ -30,17 +33,12 @@ defmodule Utils.Reader do
         methods
       end
 
-
-
     %{step: step, methods: methods}
   end
 
   def argument_reader(_) do
     {:error, "Invalid arguments"}
   end
-
-
-
 
   def read_point do
     case IO.gets("") do

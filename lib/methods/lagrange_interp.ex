@@ -10,7 +10,7 @@ defmodule Methods.LagrangeInterp do
   defimpl Methods.InterpolationProtocol, for: Methods.LagrangeInterp do
     alias Point
 
-    @spec method_name(%Methods.LagrangeInterp{}) :: <<_::64>>
+    @spec method_name(Methods.LagrangeInterp.t()) :: <<_::64>>
     def method_name(_) do
       "lagrange"
     end
@@ -19,7 +19,7 @@ defmodule Methods.LagrangeInterp do
       4
     end
 
-    @spec apply(%Methods.LagrangeInterp{}, float(), list(Point.t())) ::
+    @spec apply(Methods.LagrangeInterp.t(), float(), list(Point.t())) ::
             list(Point.t()) | {:error, String.t()}
     def apply(_, step \\ 0.5, points) do
       if Enum.count(points) < 4 do
@@ -40,12 +40,12 @@ defmodule Methods.LagrangeInterp do
     end
 
     @spec interpolate(list(Point.t()), float()) :: float()
+    # credo:disable-for-lines:55 Credo.Check.Refactor.Nesting
     def interpolate(points, x_for_search) do
       Enum.reduce(
         points,
         0.0,
         fn %Point{x: x1, y: y1}, acc ->
-          # Вычисление базисного полинома
           q =
             Enum.reduce(
               points,

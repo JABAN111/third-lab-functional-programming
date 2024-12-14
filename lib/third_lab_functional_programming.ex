@@ -1,4 +1,9 @@
 defmodule ThirdLabFunctionalProgramming do
+
+  @moduledoc """
+  Main module for the third lab.
+  """
+
   alias Utils.Writer
   alias Utils.Reader
   alias Methods.InterpolationProtocol
@@ -59,8 +64,6 @@ defmodule ThirdLabFunctionalProgramming do
     config = Reader.argument_reader(args)
 
     {:ok, pid} = InterSuperVisor.start_link(config)
-
-    IO.inspect(pid)
 
     run(config, pid)
   end
